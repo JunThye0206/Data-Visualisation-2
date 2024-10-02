@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Homework 10</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+
+
+</head>
+
+<body>
+
+  <div class="page">
+
+
+      <div class="pure-u-1-1">
+        <h1>Mining in Australia</h1>
+        <p>This visualisation is about mining in Australia.</p>
+      </div>
+
+
+      <div>
+        <h2>Australian Mines</h2>
+        <div id="vis1" class="vis-container">
+        </div><p>
+          There are mines located in all states of Australia with 
+          <span class="highlight-place">Western Australia, Queensland</span> and 
+          <span class="highlight-place">New South Wales</span> having the most mines. Both 
+          <span class="highlight-place">Queensland</span> and <span class="highlight-place">New South Wales</span> focus on 
+          <span class="highlight-type">metal deposits</span> and also <span class="highlight-type">coal</span>. 
+          Whereas <span class="highlight-place">Western Australia</span> focusses on 
+          <span class="highlight-type">metal deposits</span> and <span class="highlight-type">iron</span>.
+        </p>
+        
+        
+        <div>
+          <h2>Mining Expenditure in Australia</h2>
+          <div id="vis2" class="vis-container"></div>
+        <p>
+          For the most years the actual mining exploration expenses exceeded the expected mining exploration expenses. The biggest difference was in <span class="highlight-value">2021</span> where the amount exceeded was up to <span class="highlight-value">14% (442.9 Million)</span>. However this is not true for the year <span class="highlight-value">2020</span>, where the actual expense was  <span class="highlight-value">lesser</span> than the expected expense. This is due to the pandemic that happened in 2020 which made the mining industry stop working during that time.
+        </p></div>
+        </div>
+
+
+  </div> 
+
+  <script type="text/javascript">
+    var specVis1 = "mines_location.vg.json";
+    var specVis2 = "actual_vs_expected.vg.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false });
+    vegaEmbed('#vis2', specVis2, { "actions": false });
+  </script>
+</body>
+
+</html>
