@@ -36,7 +36,7 @@ h1 {
 }
 
 .pure-g {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .small-font {
@@ -44,19 +44,19 @@ h1 {
 }
 
 .highlight-place {
-	font-size: 20px;
+	font-size: 18px;
 	font-style: bold;
 	color: goldenrod;
 }
 
 .highlight-type {
-	font-size: 20px;
+	font-size: 18px;
 	font-style: bold;
 	color: brown;
 }
 
 .highlight-value {
-	font-size: 20px;
+	font-size: 18px;
 	font-style: bold;
 	color: darkblue;
 }

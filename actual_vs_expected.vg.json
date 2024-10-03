@@ -1,25 +1,29 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Actual vs Expected Mineral Exploration Expense in Australia",
-    "width": 800,
-    "height": 400,
-    "data": {
-      "url": "https://raw.githubusercontent.com/JunThye0206/Homework10/refs/heads/main/Data/actual_expected.csv"
-    },
-    "transform": [
-    {
-      "calculate": "'Actual: ' + datum.Actual + ', Expected: ' + datum.Expected",
-      "as": "label"
-    },
-    {
-  "calculate": "'Year: ' + datum.Year + '\\n' + ((datum.Proportion - 100) + '% over expected amount')",
-  "as": "percentage"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Actual vs Expected Mineral Exploration Expense in Australia",
+  "width": 700,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/JunThye0206/Data-Visualisation-2/refs/heads/main/Data/actual_expected.csv"
+  },
+  "transform": [
+  {
+    "calculate": "'Actual: ' + datum.Actual + ', Expected: ' + datum.Expected",
+    "as": "label"
+  },
+  {
+"calculate": "'Year: ' + datum.Year + '\\n' + ((datum.Proportion - 100) + '% over expected amount')",
+"as": "percentage"
 },
+  {
+    "calculate": "datum.Actual > datum.Expected ? 'Exceeded' : 'Not Met'",
+    "as": "status"
+  },
 {
 "filter": "year_selection == null || datum.Year == year_selection"}
 
-  ],
-  "params": [
+],
+"params": [
 {
 "name": "year_selection",
 "bind": {
@@ -46,64 +50,74 @@ null,
 }
 }
 ],
-    "layer": [{
-        "mark": {"type": "bar", "clip": true},
-        "encoding": {
-          "x": {
-            "field": "Actual",
-            "type": "quantitative",
-            "title": "Mineral Exploration"
-          },
-          "y": {
-            "field": "Year",
-            "type": "ordinal"
+  "layer": [{
+      "mark": {"type": "bar", "clip": true},
+      "encoding": {
+        "x": {
+          "field": "Actual",
+          "type": "quantitative",
+          "title": "Mineral Exploration Expenses (Millions)"
         },
-          "tooltip": [
-          {"field": "label", "type": "nominal", "title": "Mine Name"}
-        ]
+        "y": {
+          "field": "Year",
+          "type": "ordinal"
+      },
+      "color": {
+        "field": "status",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Exceeded", "Not Met"],
+          "range": ["#abc94f", "#b04fe8"]
+        },
+        "legend": {
+          "title": "Status"
         }
       },
-      {
-        "mark": {"type":"tick"},
-        "encoding": {
-          "x": {
-            "field": "Expected",
-            "type": "quantitative"
+        "tooltip": [
+        {"field": "label", "type": "nominal", "title": "Mine Name"}
+      ]
+      }
+    },
+    {
+      "mark": {"type":"tick"},
+      "encoding": {
+        "x": {
+          "field": "Expected",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Year",
+          "type": "ordinal",
+          "scale": {"padding": 0.8} 
           },
-          "y": {
-            "field": "Year",
-            "type": "ordinal",
-            "scale": {"padding": 0.8} 
-            },
-          "color": {"value": "red"},
-          "size": {"value": 30},
-          "tooltip": [
-          {"field": "label", "type": "nominal", "title": "Mine Name"}
-        ]
-        }
+        "color": {"value": "red"},
+        "size": {"value": 30},
+        "tooltip": [
+        {"field": "label", "type": "nominal", "title": "Mine Name"}
+      ]
+      }
+    },
+    {
+      "mark": {
+      "type": "text",
+      "align": "right",
+      "baseline": "bottom",
+      "dx": 330,
+      "dy": 10,
+      "fontSize": 11.5,
+      "fontStyle": "italic"
       },
-      {
-        "mark": {
-        "type": "text",
-        "align": "right",
-        "baseline": "bottom",
-        "dx": 330,
-        "dy": 10,
-        "fontSize": 11.5,
-        "fontStyle": "italic"
-        },
-        "encoding": {
-        "text": {"field": "percentage", "type": "nominal"},
-        "color": {"value": "black"},
-        "opacity": {
-        "condition": {
-        "test": "datum['Year'] == '2021'",
-        "value": 1
-        },
-        "value": 0
-      }
-      }
-      }
-    ]
-  }
-  
+      "encoding": {
+      "text": {"field": "percentage", "type": "nominal"},
+      "color": {"value": "black"},
+      "opacity": {
+      "condition": {
+      "test": "datum['Year'] == '2021'",
+      "value": 1
+      },
+      "value": 0
+    }
+    }
+    }
+  ]
+}
