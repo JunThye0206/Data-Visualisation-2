@@ -67,7 +67,7 @@ null,
         "type": "nominal",
         "scale": {
           "domain": ["Exceeded", "Not Met"],
-          "range": ["#abc94f", "#b04fe8"]
+          "range": ["#d8b365", "#8c510a"]
         },
         "legend": {
           "title": "Status"
