@@ -4,7 +4,7 @@
       "url": "https://raw.githubusercontent.com/JunThye0206/Data-Visualisation-2/refs/heads/main/Data/drilling.csv"
     },
     "title": "Expense vs Meters Drilled",
-    "width":"600",
+    "width":450,
     "params": [
       {
         "name": "Expense_Above",
@@ -16,7 +16,7 @@
           "step": 100,
           "name": "Expense starting from: "
         }
-      },
+      }
     ],
     "transform": [
       {"filter": "datum.Expense > Expense_Above"}
@@ -105,9 +105,16 @@
           "y": {
             "field": "Drilled",
             "type": "quantitative"
-          }
+          },
+          "tooltip": [
+            {"field": "Expense", "type": "quantitative", "title": "Expense"},
+            {"field": "Drilled", "type": "quantitative", "title": "Drilled"}
+          ]
         }
       }
-    ]
+    ],
+    "config": {
+    "background": "#F7F3E3" 
+  }
   }
   

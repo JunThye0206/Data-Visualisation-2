@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Actual vs Expected Mineral Exploration Expense in Australia",
   "width": 700,
-  "height": 400,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/JunThye0206/Data-Visualisation-2/refs/heads/main/Data/actual_expected.csv"
   },
@@ -102,12 +102,19 @@ null,
       "type": "text",
       "align": "right",
       "baseline": "bottom",
-      "dx": 330,
-      "dy": 10,
+      "dx": 20,
+      "dy": -18,
       "fontSize": 11.5,
       "fontStyle": "italic"
       },
-      "encoding": {
+      "encoding": {"x": {
+      "field": "Actual",
+      "type": "quantitative"
+        },
+      "y": {
+      "field": "Year",
+      "type": "ordinal"
+      },
       "text": {"field": "percentage", "type": "nominal"},
       "color": {"value": "black"},
       "opacity": {
@@ -118,6 +125,39 @@ null,
       "value": 0
     }
     }
+    },
+    {
+      "mark": {
+      "type": "text",
+      "align": "right",
+      "baseline": "bottom",
+      "dx": 20,
+      "dy": -18,
+      "fontSize": 11.5,
+      "fontStyle": "italic"
+      },
+      "encoding": {
+      "x": {
+      "field": "Actual",
+      "type": "quantitative"
+        },
+      "y": {
+      "field": "Year",
+      "type": "ordinal"
+      },
+      "text": {"field": "percentage", "type": "nominal"},
+      "color": {"value": "black"},
+      "opacity": {
+      "condition": {
+      "test": "datum['Year'] == '2020'",
+      "value": 1
+      },
+      "value": 0
     }
-  ]
+    }
+    }
+  ],
+  "config": {
+  "background": "#F7F3E3" 
+}
 }

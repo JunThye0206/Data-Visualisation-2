@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
+  "width": 750,
   "height": 400,
   "title": "Mines in Australia",
   "projection": {"type": "mercator"},
@@ -65,11 +65,10 @@
           "type": "nominal",
           "legend": {"title": "Type of Mine"},
           "scale": {"domain": [
-              "Base metals", "Gold", "Iron ore",  "Mineral sands", "Uranium", "Coal", "Diamond"
+              "Base metals", "Iron ore", "Gold", "Mineral sands", "Uranium", "Coal", "Diamond"
             ], 
             "range": [
-              "#8c510a", "#d8b365", "#f6e8c3", "#f5f5f5", "#c7eae5", "#5ab4ac", 
-              "#01665e"
+            "#8c510a", "#bf812d","#d8b365", "#d0d3a5", "#c7eae5", "#5ab4ac", "#01665e"
             ]}
         },
         "opacity": {
@@ -86,6 +85,36 @@
           
         ]
       }
+    },{
+      "data": {
+        "url": "https://raw.githubusercontent.com/JunThye0206/Data-Visualisation-2/refs/heads/main/Data/Mining_map.csv"
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -5,
+        "fontSize": 10,
+        "fontStyle": "italic"
+      },
+      "transform": [
+        {
+          "filter": "(datum['Deposit Name'] == 'Narrabri' || datum['Deposit Name'] == 'Wombola'|| datum['Deposit Name'] == 'Middlemount' || datum['Deposit Name'] == 'Bamboo Creek' || datum['Deposit Name'] == 'Mount Watson')"
+        },
+        {
+          "calculate": "'Cluster of ' + datum['Commodity Group']",
+          "as": "cluster_text"
+        }
+      ],
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "text": {"field": "cluster_text", "type": "nominal"},
+        "color": {"value": "red"}
+      }
     }
-  ]
+  ],
+  "config": {
+  "background": "#F7F3E3" 
+}
 }

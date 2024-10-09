@@ -1,12 +1,13 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title":"Category expenditure",
     "data": {"url": "https://raw.githubusercontent.com/JunThye0206/Data-Visualisation-2/refs/heads/main/Data/Australia_categories.csv"},
     "vconcat": [
       {
         "layer": [
           {
             "mark": "area",
-            "width": 480,
+            "width": 410,
             "transform": [
               {
                 "fold": [
@@ -38,15 +39,12 @@
               },
               "color": {
                 "field": "Category",
-                "scale": {
-                  "domain": [
-                    "Base Metal", "Gold", "Iron ore", "Mineral sands", "Uranium", "Coal", "Diamonds"
-                  ],
-                  "range": [
-                    "#8c510a", "#d8b365", "#f6e8c3", "#f5f5f5", "#c7eae5", "#5ab4ac",
-                    "#01665e"
-                  ]
-                }
+                "scale": {"domain": [
+              "Base Metal", "Iron ore", "Gold", "Mineral sands", "Uranium", "Coal", "Diamonds"
+            ], 
+            "range": [
+             "#8c510a", "#bf812d","#d8b365", "#d0d3a5", "#c7eae5", "#5ab4ac", "#01665e"
+            ]}
               },
               "tooltip": [
                 {"field": "Date", "type": "temporal", "title": "Date"},
@@ -54,25 +52,11 @@
                 {"field": "Amount", "type": "quantitative", "title": "Amount"}
               ]
             }
-          },
-          {
-            "mark": {
-              "type": "text",
-              "align": "left",
-              "baseline": "top",
-              "dx": -100,
-              "dy": 10,
-              "fontSize": 11
-            },
-            "encoding": {
-              "text": {"value": "Gold is the ore with the highest expenditure"},
-              "color": {"value": "#5A5A5A"}
-            }
           }
         ]
       },
       {
-        "width": 480,
+        "width": 410,
         "height": 60,
         "mark": {
           "type": "area",
@@ -96,9 +80,16 @@
             "field": "Total",
             "type": "quantitative",
             "axis": {"tickCount": 3, "grid": false}
-          }
+          },
+          "tooltip": [
+            {"field": "Date", "type": "temporal", "title": "Date"},
+            {"field": "Total", "type": "quantitative", "title": "Total"}
+          ]
         }
       }
-    ]
+    ],
+    "config": {
+    "background": "#F7F3E3" 
+  }
   }
   

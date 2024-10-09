@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Homework 10</title>
+  <title>Data visualisation 2</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -31,16 +31,31 @@
 
       <div class="pure-u-1-1">
         <h1>Mining in Australia</h1>
-        <p>This visualisation is about mining in Australia.</p>
+        <div class="pure-g">
+          <div class="pure-u-2-3">
+            <div class="description-intro">Mining is a critical industry in Australia, playing a significant </div>
+              <div class="description-intro">role in the nation's
+               economy and shaping its development </div>
+               <div class="description-intro">over time. Australia is one of the world's leading producers </div>
+               <div class="description-intro">of a variety of minerals</div>
+          </div>
+  
+          <div class="pure-u-1-3">
+            <p class="small-textl">Australia is the country with the</p>
+            <p class="big-text">2nd</p>
+            <p class="small-textr">most mineral productions.</p>
+          </div>  
+        </div>
       </div>
 
       <h2>Australian Mines</h2>
       <div id="vis1" class="vis-container"></div>
 
+
+
       <div class="pure-g">
         <div class="pure-u-1-2">
-
-          <p>There are mines located in all states of Australia with 
+          <p class="description-left">There are mines located in all states of Australia with 
           <span class="highlight-place">Western Australia, Queensland</span> and 
           <span class="highlight-place">New South Wales</span> having the most mines. 
           Both 
@@ -50,8 +65,9 @@
           <span class="highlight-type">gold, base metals</span> and <span class="highlight-type">iron</span>.
         </p>
         </div>
+
         <div class="pure-u-1-2">
-        <p>
+        <p class="description-right">
           We can also see that most mines in Australia are located near sources of <span class="highlight-type">water</span>, 
           including the <span class="highlight-type">ocean, rivers and lakes.</span> This is because mines require alot of water
            during the mining process. They will need water to seperate minerals, cooling machines
@@ -59,23 +75,114 @@
         </p>
         </div>  
       </div>
-      
+
+    <h2>State Expenditures</h2>
+    <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="vis5" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description-right">
+          <p> <span class="highlight-place">Western Australia</span> is the state with <span class="highlight-type">most expense</span>, 
+            with Queensland and New South Wales alternating between 2 and 3. 
+            This is because they have the <span class="highlight-type">most mines</span>. 
+            Other than that, South Australia, Northern Territory and Victoria alternating 
+            between 4-6 place. Lastly, <span class="highlight-place">Tasmania</span> 
+            <span class="highlight-type">rank last</span> for expenses in every year. 
+            This is due the small area and small number of mines available in Tasmania.
+            So we can see the higher the number of mines, the higher the expenses. 
+           </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="vis6" class="vis-container"></div>
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <p class="description-left">
+            Each state focuses on different categories of minerals, with most of them having 
+            <span class="highlight-value">3-4</span> different categories. 
+            <span class="highlight-type">Gold, Base Metals, and Iron</span> are the minerals that have the highest expenditures. 
+            This is possibly due to <span class="highlight-type">market demand</span> or availability of resources in those regions.
+          </p>
+        </div>
+
+        <div class="pure-u-1-2">
+          <p class="description-right">
+            <span class="highlight-place">Western Australia, South Australia </span>and  <span class="highlight-place">Queensland </span> show significantly <span class="highlight-type">higher </span> levels of investment compared to states like 
+            <span class="highlight-place">Tasmania </span>and the <span class="highlight-place">Nothern Territory </span>.
+            This trend is aligned with the states' rich resource deposits and mining infrastructure.
+            
+          </p>
+        </div>  
+      </div>
+
+      <h2>Category Expenditures</h2>
+      <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div id="vis3" class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description-right">
+            <div class="description">
+              <p>
+                The top section of the chart breaks down 
+                the expenses across different minerals, showing how each category contributes to the overall expenditure. 
+                Notably, <span class="highlight-type">Base Metals</span>, <span class="highlight-type">Gold</span>, and 
+                <span class="highlight-type">Iron ore</span> have the largest shares of spending throughout the period. 
+                Other minerals such as <span class="highlight-type">Mineral Sands</span>, 
+                <span class="highlight-type">Uranium</span>, <span class="highlight-type">Coal</span>, and 
+                <span class="highlight-type">Diamonds</span> occupy smaller portions of the total expenditures. 
+              </p>
+              <p>
+                The bottom section of the chart provides a view of the <span class="highlight-type">total expenditures</span> 
+                across all mineral categories. Although there are some variations, the overall trend suggests relatively stable 
+                spending from <span class="highlight-value">2019 to 2023</span>. 
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+
       <h2>Mining Expenditure in Australia</h2>
       <div id="vis2" class="vis-container"></div>
       
 
       <div class="pure-g">    
-      <div class="pure-u-1-2">
-        <p>
-          For the most years the actual mining exploration expenses exceeded the expected mining exploration expenses. The biggest difference was in <span class="highlight-value">2021</span> where <br>the amount exceeded was up to <span class="highlight-value">14% (442.9 Million)</span>. </br>
-        </p>
+        <div class="pure-u-1-2">
+          <p class="description-left">
+            For the most years the actual mining exploration expenses exceeded the expected mining exploration expenses. The biggest difference was in <span class="highlight-value">2021</span> where <br>the amount exceeded was up to <span class="highlight-value">14% (442.9 Million)</span>. </br>
+          </p>
+        </div>
+        <div class="pure-u-1-2">
+          <p class="description-right">
+            However this is not true for the year <span class="highlight-value">2020</span>, where the actual expense was  <span class="highlight-value">lesser</span> than the expected expense. This is due to the pandemic that happened in 2020 which made the mining industry stop working during that time.
+          </p>
+        </div>
       </div>
-      <div class="pure-u-1-2">
-        <p>
-          However this is not true for the year <span class="highlight-value">2020</span>, where the actual expense was  <span class="highlight-value">lesser</span> than the expected expense. This is due to the pandemic that happened in 2020 which made the mining industry stop working during that time.
-        </p>
+
+
+      <h2>State Expenditures</h2>
+    <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="vis4" class="vis-container"></div>
       </div>
+      <div class="pure-u-1-3">
+        <div class="description-right">
+          <p>The <span class="highlight-type">possitive correlation</span> between expenditure and meters drilled is evident from the upward regression line, 
+            indicating that as more money is spent,the more metres will be drilled. 
+            This is because <span class="highlight-type">increased spending</span> is often associated with <span class="highlight-type">larger project</span> and more<span class="highlight-type"> drilling operations</span>.
+            The data points are scattered around the regression line, 
+            suggesting variability in the relationship between expenses and meters drilled. 
+            This variability could indicate that 
+            other factors (such as geography, type of mineral)
+            may influence drilling output independently of expense.</p>
+        </div>
       </div>
+    </div>
+      
 
 
   </div> 
@@ -83,9 +190,18 @@
   <script type="text/javascript">
     var specVis1 = "mines_location.vg.json";
     var specVis2 = "actual_vs_expected.vg.json";
+    var specVis3 = "categories.vg.json";
+    var specVis4 = "Drilling.vg.json";
+    var specVis5 = "ranking.vg.json";
+    var specVis6 = "states.vg.json";
 
     vegaEmbed('#vis1', specVis1, { "actions": false });
     vegaEmbed('#vis2', specVis2, { "actions": false });
+    vegaEmbed('#vis3', specVis3, { "actions": false });
+    vegaEmbed('#vis4', specVis4, { "actions": false });
+    vegaEmbed('#vis5', specVis5, { "actions": false });
+    vegaEmbed('#vis6', specVis6, { "actions": false });
+
   </script>
 </body>
 
