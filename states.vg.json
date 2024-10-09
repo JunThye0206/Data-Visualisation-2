@@ -30,81 +30,68 @@
         }
       }
     ],
-    "vconcat":[{"title":"Expediture of Selected State","width": 700,"layer": [
+    "vconcat": [
       {
-        "transform": [
-          {"filter": "state_selection == null"},
-        {
-            "fold": [
-              "Base Metal",
-              "Gold",
-              "Iron ore",
-              "Mineral sands",
-              "Uranium",
-              "Coal",
-              "Diamonds"
+        "title": "Expenditure of Selected State",
+        "width": 750,
+        "height": 300,
+        "layer": [
+          {
+            "transform": [
+              {"filter": "state_selection == null"},
+              {"filter": "datum.State == 'New South Wales'"}
             ],
-            "as": ["Mineral", "Expenditure"]
-          },
-          {"filter": "datum.State == 'New South Wales'"}
-        ],
-        "mark": "line",
-        "encoding": {
-          "x": {
-            "field": "Date",
-            "type": "temporal",
-            "title": "Date",
-            "scale": {"domain": {"selection": "brush"}}
-          },
-          "y": {
-            "field": "Expenditure",
-            "type": "quantitative",
-            "title": "Expenditure"
-          },
-          "color": {
-            "field": "Mineral",
-            "scale": {
-            "domain": [
-            "Base Metal", "Iron ore", "Gold", "Mineral sands", "Uranium", "Coal", "Diamonds","New South Wales","Victoria","Queensland","South Australia","Western Australia","Tasmania","Northern Territory"
-          ],
-            "range": [
-             "#8c510a", "#bf812d","#d8b365", "#d0d3a5", "#c7eae5", "#5ab4ac", "#01665e",
-              "#b0bb9b", "#364d37", "#656f51", "#dfa03f", "#ba9474", "#511012","#3e5461"
-                ]
+            "mark": "line",
+            "encoding": {
+              "x": {
+                "field": "Date",
+                "type": "temporal",
+                "title": "Date",
+                "scale": {"domain": {"selection": "brush"}}
+              },
+              "y": {
+                "field": "Value",
+                "type": "quantitative",
+                "title": "Value"
+              },
+              "color": {
+                "field": "Type",
+                "legend": {"title": "Minerals"},  
+                "scale": {
+                  "domain": [
+                    "Base Metal",
+                    "Iron ore",
+                    "Gold",
+                    "Mineral sands",
+                    "Uranium",
+                    "Coal",
+                    "Diamonds"
+                  ],
+                  "range": [
+                    "#8c510a", "#bf812d", "#d8b365", "#d0d3a5", "#c7eae5", "#5ab4ac", "#01665e"
+                  ]
+                }
+              },
+              "tooltip": [
+                {"field": "State", "type": "ordinal", "title": "State"},
+                {"field": "Date", "type": "temporal", "title": "Date"},
+                {"field": "Type", "type": "ordinal", "title": "Mineral"},
+                {"field": "Value", "type": "quantitative", "title": "Expenditure"}
+              ]
             }
           },
-          "tooltip": [
-            {"field": "State", "type": "ordinal", "title": "State"},
-            {"field": "Date", "type": "temporal", "title": "Date"},
-            {"field": "Mineral", "type": "ordinal", "title": "Mineral"},
-            {"field": "Expenditure", "type": "quantitative", "title": "Expenditure"}
-          ]
-        }
-      },
-      {
-        "transform": [
-          {"filter": "state_selection != null"},
           {
-            "fold": [
-              "Base Metal",
-              "Gold",
-              "Iron ore",
-              "Mineral sands",
-              "Uranium",
-              "Coal",
-              "Diamonds"
+            "transform": [
+              {"filter": "state_selection != null"},
+              {"filter": "datum.State == state_selection"}
             ],
-            "as": ["Mineral", "Expenditure"]
-          },
-          {"filter": "datum.State == state_selection"}
-        ],
-        "mark": "line",
-        "encoding": {
-          "x": {
-                  "field": "Date",
-                  "type": "temporal",
-                  "title": "Date",
-                  "axis": {
+            "mark": "line",
+            "encoding": {
+              "x": {
+                "field": "Date",
+                "type": "temporal",
+                "title": "Date",
+                "axis": {
                   "domain": false,
                   "format": "%b %Y",
                   "tickSize": 0,
@@ -112,74 +99,107 @@
                   "title": ""
                 },
                 "scale": {"domain": {"selection": "brush"}}
-                },
+              },
+              "y": {
+                "field": "Value",
+                "type": "quantitative",
+                "title": "Expenditure"
+              },
+              "color": {
+                "field": "Type",
+                "legend": false, 
+                "scale": {
+                  "domain": [
+                    "Base Metal",
+                    "Gold",
+                    "Iron ore",
+                    "Mineral sands",
+                    "Uranium",
+                    "Coal",
+                    "Diamonds"
+                  ],
+                  "range": [
+                    "#797d62", "#9b9b7a", "#d9ae94", "#d0d3a5", "#ffcb69", "#d08c60", "#997b66"
+                  ]
+                }
+              },
+              "tooltip": [
+                {"field": "State", "type": "ordinal", "title": "State"},
+                {"field": "Date", "type": "temporal", "title": "Date"},
+                {"field": "Type", "type": "ordinal", "title": "Mineral"},
+                {"field": "Value", "type": "quantitative", "title": "Expenditure"}
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Expenditure of All States",
+        "width": 750,
+        "height": 60,
+        "mark": "line",
+        "selection": {"brush": {"type": "interval", "encodings": ["x"]}},
+        "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "Value",
+              "as": "TotalExpenditure"
+            }
+          ],
+          "groupby": ["State", "Date"]
+        }
+      ],
+        "encoding": {
+          "x": {
+            "field": "Date",
+            "type": "temporal",
+            "title": "Date",
+            "axis": {
+              "domain": false,
+              "format": "%b %Y",
+              "tickSize": 0,
+              "labelAngle": -45,
+              "title": ""
+            }
+          },
           "y": {
-            "field": "Expenditure",
+            "aggregate": "sum",
+            "field": "TotalExpenditure",
             "type": "quantitative",
-            "title": "Expenditure"
+            "title": "Total Expenditure"
           },
           "color": {
-            "field": "Mineral",
+            "field": "State",
+            "legend": {"title": "States"},  
             "scale": {
-            "domain": [
-            "Base Metal", "Gold", "Iron ore", "Mineral sands", "Uranium", "Coal", "Diamonds"
-          ],
-            "range": [
-              "#797d62", "#9b9b7a", "#d9ae94", "#d0d3a5", "#ffcb69", "#d08c60","#997b66"
-                ]
+              "domain": [
+                "New South Wales",
+                "Victoria",
+                "Queensland",
+                "South Australia",
+                "Western Australia",
+                "Tasmania",
+                "Northern Territory"
+              ],
+              "range": [
+                "#b0bb9b", "#364d37", "#656f51", "#dfa03f", "#ba9474", "#511012", "#3e5461"
+              ]
             }
           },
           "tooltip": [
             {"field": "State", "type": "ordinal", "title": "State"},
             {"field": "Date", "type": "temporal", "title": "Date"},
-            {"field": "Mineral", "type": "ordinal", "title": "Mineral"},
-            {"field": "Expenditure", "type": "quantitative", "title": "Expenditure"}
+            {"field": "Value", "type": "quantitative", "title": "Total"}
           ]
         }
       }
-    ]}
-    ,{
-      "title":"Expenditure of All States",
-      "width": 700,"height": 100,
-      "mark": "line",
-              "selection": {"brush": {"type": "interval", "encodings": ["x"]}},
-              "encoding": {
-                "x": {
-                  "field": "Date",
-                  "type": "temporal",
-                  "title": "Date",
-                  "axis": {
-                  "domain": false,
-                  "format": "%b %Y",
-                  "tickSize": 0,
-                  "labelAngle": -45,
-                  "title": ""
-                }
-                },
-                "y": {
-                  "aggregate": "sum",
-                  "field": "Total",
-                  "type": "quantitative",
-                  "title": "Total Expenditure"
-                },
-                "color": {
-                  "field": "State",
-                  "type": "nominal",
-                  "legend": {
-                    "title": "States"
-                  }
-                },
-                "tooltip": [
-                  {"field": "State", "type": "ordinal", "title": "State"},
-                  {"field": "Date", "type": "temporal", "title": "Date"},
-                  {"field": "Total", "type": "quantitative", "title": "Total"}
-                ]
-              }
-    }
     ],
     "config": {
-    "background": "#F7F3E3" 
-  }
-    
+      "background": "#F7F3E3"
+    },
+   "resolve": {"scale": {"color": "independent"}}
+
   }
   

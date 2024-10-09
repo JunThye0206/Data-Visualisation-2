@@ -7,7 +7,7 @@
         "layer": [
           {
             "mark": "area",
-            "width": 410,
+            "width": 450,
             "transform": [
               {
                 "fold": [
@@ -56,7 +56,7 @@
         ]
       },
       {
-        "width": 410,
+        "width": 450,
         "height": 60,
         "mark": {
           "type": "area",

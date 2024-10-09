@@ -4,7 +4,7 @@
       "url": "https://raw.githubusercontent.com/JunThye0206/Data-Visualisation-2/refs/heads/main/Data/drilling.csv"
     },
     "title": "Expense vs Meters Drilled",
-    "width":450,
+    "width":530,
     "params": [
       {
         "name": "Expense_Above",
@@ -59,7 +59,7 @@
           {
             "regression": "Drilled",
             "on": "Expense",
-            "extent": [0, 1200]
+            "extent": [0, 1100]
           }
         ],
         "encoding": {
@@ -90,7 +90,7 @@
         },
         "encoding": {
           "text": {"field": "label"},
-          "color": {"value": "red"},
+          "color": {"value": "#ff5883"},
           "opacity": {
             "condition": {
               "test": "datum['Expense']=='855.3'||datum['Expense']=='379.5'",
