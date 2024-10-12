@@ -12,7 +12,7 @@
         "bind": {
           "input": "range",
           "min": 0,
-          "max": 1200,
+          "max": 1100,
           "step": 100,
           "name": "Expense starting from: "
         }
